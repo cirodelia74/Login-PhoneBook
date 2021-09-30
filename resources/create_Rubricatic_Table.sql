@@ -9,7 +9,7 @@ CREATE TABLE `rubricatic` (
   `indirizzo` varchar(50) DEFAULT NULL,
   `citta` varchar(30) DEFAULT NULL,
   `telefono` varchar(20) NOT NULL,
-  `email` varchar(40) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`id_user`) REFERENCES login(`id`)
