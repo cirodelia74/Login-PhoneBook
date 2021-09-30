@@ -12,7 +12,7 @@ CREATE TABLE `login` (
   `indirizzo` varchar(50) DEFAULT NULL,
   `citta` varchar(30) DEFAULT NULL,
   `telefono` varchar(20) NOT NULL,
-  `email` varchar(40) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
   `hash_password` varchar(100) NOT NULL,
   `salt` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
