@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import rubrica.login.Login;
+import rubrica.login.LoginGui;
 import rubrica.model.DbLogin;
 
 /**
@@ -25,7 +25,7 @@ public class AppMain {
 
 		try {
 			DbLogin dbLogin = new DbLogin();
-			new Login(dbLogin);
+			new LoginGui(dbLogin);
 		}
 		catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Unable to contact Database", "Database Error", JOptionPane.ERROR_MESSAGE);
