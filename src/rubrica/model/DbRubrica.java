@@ -23,8 +23,9 @@ public class DbRubrica {
 	 */
 	public DbRubrica(Connection cnn, int user_id) throws SQLException {
 		
+		// get logged user account
 		this.user = user_id;
-		// connessione al database della rubrica
+		// get database connection
 		this.cnn = cnn;
 	}
 	

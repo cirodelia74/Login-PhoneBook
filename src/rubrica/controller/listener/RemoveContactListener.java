@@ -83,9 +83,9 @@ public class RemoveContactListener implements ActionListener {
 	 * Delete selected contact  
 	 */
 	private void deleteContact() {
-		String datiUpdate = setStringaInfo();
+		String datiRemove = setStringaInfo();
 
-		int okUpdate = JOptionPane.showConfirmDialog(null, datiUpdate, "CONFERMA CANCELLAZIONE", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		int okUpdate = JOptionPane.showConfirmDialog(null, datiRemove, "Confirm Deletion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		if (okUpdate == JOptionPane.YES_OPTION) {
 			
 			try {

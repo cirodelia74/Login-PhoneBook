@@ -118,17 +118,14 @@ public class Security {
 	 * @param salt
 	 * @return hash-password generate as string
 	 */
-	public String getHashSHA512(String StringToHash, String salt){
+	public String getHashSHA512(String StringToHash, String salt) throws NoSuchAlgorithmException {
         String generatedPassword = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(salt.getBytes(StandardCharsets.UTF_8));
-            byte[] bytes = md.digest(StringToHash.getBytes(StandardCharsets.UTF_8));
-            generatedPassword = Base64.getEncoder().encodeToString(bytes);
-        }
-        catch (NoSuchAlgorithmException e){
-            e.printStackTrace();
-        }
+
+        MessageDigest md = MessageDigest.getInstance("SHA-512");
+        md.update(salt.getBytes(StandardCharsets.UTF_8));
+        byte[] bytes = md.digest(StringToHash.getBytes(StandardCharsets.UTF_8));
+        generatedPassword = Base64.getEncoder().encodeToString(bytes);
+
         return generatedPassword;
     }
 }

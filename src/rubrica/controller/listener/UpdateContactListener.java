@@ -90,7 +90,7 @@ public class UpdateContactListener implements ActionListener {
 		String datiUpdate = setStringaInfo();
 		
 		if (verificaCampiObbligatori()) {
-			int okUpdate = JOptionPane.showConfirmDialog(null, datiUpdate, "Update Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			int okUpdate = JOptionPane.showConfirmDialog(null, datiUpdate, "Confirm Update", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (okUpdate == JOptionPane.YES_OPTION) {
 				
 				try {

@@ -50,11 +50,11 @@ public class AllContact extends JPanel {
 				this.panelChar[i] = tblModel.getCharContactTable(tabIndex[i].charAt(0));
 			}
 	
-			// instanzio il JTabbedPAne
+			// JTabbedPane for the phone book
 			this.tbpContatti = new JTabbedPane();
 			this.tbpContatti.setTabPlacement(JTabbedPane.RIGHT);
 			
-			// inserisco i pannelli con le JTable nelle tab
+			// insert JTable whit contacts in the JTabbedPane tabs
 			this.tbpContatti.addTab("*", this.all);
 			for (int i=0; i<tabIndex.length; i++) {
 				this.tbpContatti.addTab(tabIndex[i], panelChar[i]);

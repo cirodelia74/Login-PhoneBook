@@ -125,7 +125,7 @@ public class RubricaGui extends JFrame implements WindowListener {
 	 * Setting up the application panels
 	 */
 	private void setApplicationPanels() {
-		//card Layout per il pannello principale
+		// Card layout for the main panel
 		panelMain = new JPanel();
 		cardMain = new CardLayout();
 		panelMain.setLayout(cardMain);
@@ -211,10 +211,7 @@ public class RubricaGui extends JFrame implements WindowListener {
 	}
 
 	@Override
-	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void windowOpened(WindowEvent e) {}
 	
 	/**
 	 * Manage the application closure
@@ -225,8 +222,7 @@ public class RubricaGui extends JFrame implements WindowListener {
 			rubrica.close();
 		} catch (SQLException exc) {
 			JOptionPane.showMessageDialog(null, "Database disconnection failed", "Connection Error", JOptionPane.ERROR_MESSAGE);
-		}
-		
+		}		
 	}
 
 	@Override

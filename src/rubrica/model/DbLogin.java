@@ -1,6 +1,7 @@
 package rubrica.model;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,7 +26,7 @@ public class DbLogin {
 	 */
 	public DbLogin() throws SQLException {
 		
-		// connessione al database dei contatti
+		// setting up database connection
 		this.cnn = DriverManager.getConnection(AppSettings.URL +"/" +AppSettings.DATABASE, 
 							AppSettings.USER, 
 							AppSettings.PASS);
@@ -39,7 +40,7 @@ public class DbLogin {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public boolean login(String username, char[] pass) throws SQLException, IOException {
+	public boolean login(String username, char[] pass) throws SQLException, IOException, NoSuchAlgorithmException {
 		
 		PreparedStatement stmt = null;
 		String query = "SELECT * FROM login WHERE username = ?";
@@ -57,7 +58,7 @@ public class DbLogin {
 		}
 		
 		String password = new String(pass);
-
+		
 		// Check that the password entered matches the hash obtained during registration 
 		if (rs.getString("hash_password").equals(Security.getInstance().getHashSHA512(password, rs.getString("salt")))) {
 			rs.close();
@@ -120,7 +121,7 @@ public class DbLogin {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public boolean registrazione(Contatto newUser, String username, char[] pass) throws SQLException, IOException {
+	public boolean registrazione(Contatto newUser, String username, char[] pass) throws SQLException, IOException, NoSuchAlgorithmException {
 		
 		PreparedStatement stmt = null;
 		String query = "INSERT INTO login (username, cognome, nome, indirizzo, citta, telefono, email, hash_password, salt) "
@@ -190,5 +191,4 @@ public class DbLogin {
 			this.cnn.close();
 		}
 	}
-
 }

@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
@@ -49,7 +50,6 @@ public class LoginGui extends JFrame implements ActionListener, WindowListener {
 	private JPasswordField passLogin;
 	
 	private JLabel userLabel, passLabel;
-
 	private JLabel loginLabel;
 	
 	private JButton loginBtn, close1Btn;
@@ -243,8 +243,10 @@ public class LoginGui extends JFrame implements ActionListener, WindowListener {
 					JOptionPane.showMessageDialog(null, "Wrong username. Check please", "Username Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
+			catch (NoSuchAlgorithmException ex) {
+				JOptionPane.showMessageDialog(null, "Impossible to check password. Please try later", "Connection Error", JOptionPane.ERROR_MESSAGE);
+			}
 			catch (SQLException ex) {
-				ex.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Impossible to check log-in. Try later please", "Connection Error", JOptionPane.ERROR_MESSAGE);
 			}
 			catch (IOException ex) {
@@ -276,7 +278,7 @@ public class LoginGui extends JFrame implements ActionListener, WindowListener {
 		try {
 			dbLogin.close();
 		} catch (SQLException exc) {
-			JOptionPane.showMessageDialog(null, "DISCONNESSIONE AL DATABASE FALLITA", "Errore connessione", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Database disconnection failed", "Database Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

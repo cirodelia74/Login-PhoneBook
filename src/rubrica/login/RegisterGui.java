@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Arrays;
 
@@ -59,7 +60,6 @@ public class RegisterGui extends JFrame implements ActionListener {
 	private JButton resetBtn, registerBtn;
 	
 	private DbLogin dbLogin;
-
 	
 	/**
 	 * Constructor and database connection setup
@@ -288,15 +288,10 @@ public class RegisterGui extends JFrame implements ActionListener {
 	 * @return
 	 */
     private static boolean isSamePassword(char[] pass1, char[] pass2) {
-        
-    	boolean isSame = true;
 
-        if (pass1.length != pass2.length) {
-        	isSame = false;
-        } else {
-        	isSame = Arrays.equals(pass1, pass2);
-        }
-        return isSame;
+        if (pass1.length != pass2.length) 
+        	return false;
+        return Arrays.equals(pass1, pass2);
     }
 	
 	/**
@@ -319,7 +314,7 @@ public class RegisterGui extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * check availability of username and password values
+	 * check availability of username and the password values
 	 */
 	private void checkFieldsAndRegister() {
 		
@@ -357,7 +352,7 @@ public class RegisterGui extends JFrame implements ActionListener {
 	}
 	
 	/**
-	 * Inserting the new account into the database 
+	 * Inserting the new account in the database 
 	 */
 	private void registerAccount() {
 		
@@ -376,6 +371,9 @@ public class RegisterGui extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "New account created", "INSERT OK", JOptionPane.INFORMATION_MESSAGE);
 				resetFields();
 			}
+		}
+		catch (NoSuchAlgorithmException ex) {
+			JOptionPane.showMessageDialog(null, "Impossible to save password. Please try later", "Connection Error", JOptionPane.ERROR_MESSAGE);
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
