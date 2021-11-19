@@ -61,42 +61,42 @@ public class Security {
 	 * @param password chosen
 	 * @return true if 'strength score' is greater than or equal to 6
 	 */
-    public boolean isStrongPass(String password){
+    	public boolean isStrongPass(String password){
         
-        int strongCont = 0;
-        
-        // rule 1
-        if (password.length() < 7)
-            return false;
-        
-        // rule 2
-        if (password.length() >= 10 )
-        	strongCont += 2;
-        
-        // rule 3
-        if (password.matches("(?=.*\\d).*"))
-        	strongCont += 2;
-        
-        // rule 4
-        if (password.matches("(?=.*[a-z]).*")) 
-        	strongCont += 2;
-        
-        // rule 5
-        if (password.matches("(?=.*[A-Z]).*"))
-        	strongCont += 2;    
-        
-        // rule 6
-        if (password.matches("(?=.*[~!@#$%^&*()_-]).*"))
-        	strongCont += 2;
-        
-        return strongCont >= 6;        
-    }
+		int strongCont = 0;
+
+		// rule 1
+		if (password.length() < 7)
+		    return false;
+
+		// rule 2
+		if (password.length() >= 10 )
+			strongCont += 2;
+
+		// rule 3
+		if (password.matches("(?=.*\\d).*"))
+			strongCont += 2;
+
+		// rule 4
+		if (password.matches("(?=.*[a-z]).*")) 
+			strongCont += 2;
+
+		// rule 5
+		if (password.matches("(?=.*[A-Z]).*"))
+			strongCont += 2;    
+
+		// rule 6
+		if (password.matches("(?=.*[~!@#$%^&*()_-]).*"))
+			strongCont += 2;
+
+		return strongCont >= 6;        
+    	}
     
-    /**
-     * Check if password is too common
-     * @param password
-     * @return true if the chosen password is not among the most common 
-     */
+   	/**
+     	* Check if password is too common
+     	* @param password
+     	* @return true if the chosen password is not among the most common 
+     	*/
 	public boolean isCommonPsw(String password) {
 		return commonPsw.contains(password);
 	}	
@@ -106,25 +106,25 @@ public class Security {
 	 * @return
 	 */
 	public String generateSalt() {
-        SecureRandom random = new SecureRandom();
-        byte bytes[] = new byte[16];
-        random.nextBytes(bytes);
-        return Base64.getEncoder().encodeToString(bytes);
-    }
+		SecureRandom random = new SecureRandom();
+		byte bytes[] = new byte[16];
+		random.nextBytes(bytes);
+		return Base64.getEncoder().encodeToString(bytes);
+    	}	
 	
 	/**
-	 * Generate hash- password for the chosen password and salt
+	 * Generate hash-password for the chosen password and salt
 	 * @param StringToHash
 	 * @param salt
 	 * @return hash-password generate as string
 	 */
 	public String getHashSHA512(String StringToHash, String salt) throws NoSuchAlgorithmException {
-        String generatedPassword = null;
+		String generatedPassword = null;
 
-        MessageDigest md = MessageDigest.getInstance("SHA-512");
-        md.update(salt.getBytes(StandardCharsets.UTF_8));
-        byte[] bytes = md.digest(StringToHash.getBytes(StandardCharsets.UTF_8));
-        generatedPassword = Base64.getEncoder().encodeToString(bytes);
+		MessageDigest md = MessageDigest.getInstance("SHA-512");
+		md.update(salt.getBytes(StandardCharsets.UTF_8));
+		byte[] bytes = md.digest(StringToHash.getBytes(StandardCharsets.UTF_8));
+		generatedPassword = Base64.getEncoder().encodeToString(bytes);
 
         return generatedPassword;
     }
