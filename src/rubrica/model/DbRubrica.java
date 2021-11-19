@@ -51,8 +51,8 @@ public class DbRubrica {
 		int id;
 		String cognome, nome, indirizzo, citta, telefono, email;
 		String query = "SELECT * FROM rubricatic WHERE cognome LIKE ? "
-												+ "AND id_user = ? "
-												+ "ORDER BY cognome ASC, nome ASC";
+				+ "AND id_user = ? "
+				+ "ORDER BY cognome ASC, nome ASC";
 		
 		stmt = cnn.prepareStatement(query);
 		String segnaposto = Character.toString(firstLetter);
@@ -129,9 +129,10 @@ public class DbRubrica {
 		String idSelected = "";
 		PreparedStatement stmt = null;
 		String query = "SELECT id FROM rubricatic WHERE cognome = ? "
-												 + "AND nome = ? "
-												 + "AND telefono = ? "
-												 + "AND id_user = ?";
+				+ "AND nome = ? "
+				+ "AND telefono = ? "
+				+ "AND id_user = ?";
+		
 		ResultSet contactSelected = null;
 		
 		stmt = cnn.prepareStatement(query);
